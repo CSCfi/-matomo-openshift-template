@@ -60,7 +60,8 @@ environment and project quotas.
 ### Command-line deployment of Matomo
 
 1. Download the `matomo-template.yaml` from from this repo.
-2. Process and apply template using default values from template and passing you application specific parameters.
+2. Process and apply template using default values from template and passing you application
+   specific parameters.
 
 ```bash
 oc process -f matomo-template.yaml -p NAME=<app-name>  -p USER=<app-username> PASSWORD=<app-password>  -p MATOMO_DATABASE_USER=<db-username> -p MATOMO_DATABASE_PASSWORD=<db-password> -p MATOMO_DATABASE_NAME=<db-name> | oc apply -f -
