@@ -49,7 +49,7 @@ environment and project quotas.
 * **Password**, `PASSWORD=<app-password>`: Create a new password for logging into Matomo
 * **Application hostname suffix**, `APPLICATION_DOMAIN_SUFFIX=<app-suffix>`: The exposed
   hostname suffix that will be used to create routes for the application. Default when
-  using Rahti is`rahtiapp.fi`
+  using Rahti is `rahtiapp.fi`
 * **Matomo database username**, `MATOMO_DATABASE_USER=<db-username>`: Username that was
   specified when deploying MariaDB in the previous step
 * **Matomo database password**, `MATOMO_DATABASE_PASSWORD=<db-password>`: Password
