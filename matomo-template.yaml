@@ -175,7 +175,7 @@ parameters:
   name: NAME
   required: true
   value: matomo
-- description: Username for logigng into Matomo
+- description: Username for logging into Matomo
   displayName: Username
   name: USER
   required: true
