@@ -49,13 +49,13 @@ Ensure that you have the following variables ready and properly configured befor
    specific parameters, sample example shown below:-
 
 ```bash
-oc process -f matomo-template.yml -p MATOMO_APP_NAME="matomo-app-johndoe" -p MYSQL_USER="matomouser" -p MYSQL_PASSWORD="matomo" -p MYSQL_ROOT_PASSWORD="letmeinroot" -p MYSQL_DATABASE="matomodb" -p MATOMO_USERNAME="matomo" -p MATOMO_PASSWORD="matomopass" -p MATOMO_DATABASE_USER="matomouser"  -p  MATOMO_DATABASE_PASSWORD="matomo" -p  MATOMO_DATABASE_NAME="matomodb" | oc apply -f 
+oc process -f matomo-template.yaml -p MATOMO_APP_NAME="matomo-app-johndoe" -p MYSQL_USER="matomouser" -p MYSQL_PASSWORD="matomo" -p MYSQL_ROOT_PASSWORD="letmeinroot" -p MYSQL_DATABASE="matomodb" -p MATOMO_USERNAME="matomo" -p MATOMO_PASSWORD="matomopass" -p MATOMO_DATABASE_USER="matomouser"  -p  MATOMO_DATABASE_PASSWORD="matomo" -p  MATOMO_DATABASE_NAME="matomodb" | oc apply -f 
 ```
 
 ### Deleting the application and project
 
 ```bash
-oc process -f matomo-template.yml -p MATOMO_APP_NAME="matomo-app-johndoe" -p MYSQL_USER="matomouser" -p MYSQL_PASSWORD="matomo" -p MYSQL_ROOT_PASSWORD="letmeinroot" -p MYSQL_DATABASE="matomodb" -p MATOMO_USERNAME="matomo" -p MATOMO_PASSWORD="matomopass" -p MATOMO_DATABASE_USER="matomouser"  -p  MATOMO_DATABASE_PASSWORD="matomo" -p  MATOMO_DATABASE_NAME="matomodb" | oc delete -f -
+oc process -f matomo-template.yaml -p MATOMO_APP_NAME="matomo-app-johndoe" -p MYSQL_USER="matomouser" -p MYSQL_PASSWORD="matomo" -p MYSQL_ROOT_PASSWORD="letmeinroot" -p MYSQL_DATABASE="matomodb" -p MATOMO_USERNAME="matomo" -p MATOMO_PASSWORD="matomopass" -p MATOMO_DATABASE_USER="matomouser"  -p  MATOMO_DATABASE_PASSWORD="matomo" -p  MATOMO_DATABASE_NAME="matomodb" | oc delete -f -
 ```
 
 or 
