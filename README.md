@@ -34,7 +34,7 @@ Ensure that you have the following variables ready and properly configured befor
   It is advisable to use your username as the recommended value.
 * **Username**, `MATOMO_USERNAME=<app-username>`: Create a new username for logging into Matomo
 * **Password**, `MATOMO_PASSWORD=<app-password>`: Create a new password for logging into Matomo
-* **Matomo database username**, `MATOMO_DATABASE_USER=<db-username>`: Same sername that was
+* **Matomo database username**, `MATOMO_DATABASE_USER=<db-username>`: Same username that was
   specified for MariaDB.
 * **Matomo database password**, `MATOMO_DATABASE_PASSWORD=<db-password>`: Same password
   (non-root) that was specified for MariaDB.
@@ -49,7 +49,7 @@ Ensure that you have the following variables ready and properly configured befor
    specific parameters, sample example shown below:-
 
 ```bash
-oc process -f matomo-template.yaml -p MATOMO_APP_NAME="matomo-app-johndoe" -p MYSQL_USER="matomouser" -p MYSQL_PASSWORD="matomo" -p MYSQL_ROOT_PASSWORD="letmeinroot" -p MYSQL_DATABASE="matomodb" -p MATOMO_USERNAME="matomo" -p MATOMO_PASSWORD="matomopass" -p MATOMO_DATABASE_USER="matomouser"  -p  MATOMO_DATABASE_PASSWORD="matomo" -p  MATOMO_DATABASE_NAME="matomodb" | oc apply -f 
+oc process -f matomo-template.yaml -p MATOMO_APP_NAME="matomo-app-johndoe" -p MYSQL_USER="matomouser" -p MYSQL_PASSWORD="matomo" -p MYSQL_ROOT_PASSWORD="letmeinroot" -p MYSQL_DATABASE="matomodb" -p MATOMO_USERNAME="matomo" -p MATOMO_PASSWORD="matomopass" -p MATOMO_DATABASE_USER="matomouser"  -p  MATOMO_DATABASE_PASSWORD="matomo" -p  MATOMO_DATABASE_NAME="matomodb" | oc apply -f -
 ```
 
 ### Deleting the application and project
@@ -57,13 +57,9 @@ oc process -f matomo-template.yaml -p MATOMO_APP_NAME="matomo-app-johndoe" -p MY
 ```bash
 oc process -f matomo-template.yaml -p MATOMO_APP_NAME="matomo-app-johndoe" -p MYSQL_USER="matomouser" -p MYSQL_PASSWORD="matomo" -p MYSQL_ROOT_PASSWORD="letmeinroot" -p MYSQL_DATABASE="matomodb" -p MATOMO_USERNAME="matomo" -p MATOMO_PASSWORD="matomopass" -p MATOMO_DATABASE_USER="matomouser"  -p  MATOMO_DATABASE_PASSWORD="matomo" -p  MATOMO_DATABASE_NAME="matomodb" | oc delete -f -
 ```
-
-or 
-
-* `oc delete all -l app=<app-name>`
-* `oc delete secret -l app=<app-name>,deploymentconfig=<app-name>,template=<app-name>`
-  
+ 
 You might also want to delete the secret and project
 
-* `oc delete secret <secret-name>`
-* `oc delete project <project-name>`
+* `oc delete all -l app=matomo`
+* `oc delete secret -l app=matomo`
+* `oc delete pvc -l app=matomo`
