@@ -154,11 +154,16 @@ objects:
           - name: ${MATOMO_APP_NAME}-data
             mountPath: "/etc/matomopass"
             readOnly: true
+          - name: ${MATOMO_APP_NAME}-persistence
+            mountPath: "/bitnami"
         volumes:
         - name: ${MATOMO_APP_NAME}-data
           secret:
             defaultMode: 420
             secretName: ${MATOMO_APP_NAME}-secret
+        - name: ${MATOMO_APP_NAME}-persistence
+          persistentVolumeClaim:
+            claimName: ${MATOMO_APP_NAME}-persistence
 # Service
 - apiVersion: v1
   kind: Service
@@ -181,6 +186,19 @@ objects:
     type: ClusterIP
   status:
     loadBalancer: {}
+
+# PersistentVolumeClaim
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: ${MATOMO_APP_NAME}-persistence
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard-csi
 
 # Existing MariaDB objects
 # Secret
