@@ -59,6 +59,16 @@ objects:
     name: ${MATOMO_APP_NAME}-secret
   type: Opaque
 
+# ConfigMap
+- apiVersion: v1
+  data:
+    bitnami.matomoProxyClientHeader: ${MATOMO_PROXY_CLIENT_HEADER}
+    bitnami.matomoEnableForceSsl: ${MATOMO_ENABLE_FORCE_SSL}
+    bitnami.matomoEnableAssumeSecureProtocol: ${MATOMO_ENABLE_ASSUME_SECURE_PROTOCOL}
+  kind: ConfigMap
+  metadata:
+    name: ${MATOMO_APP_NAME}-config
+
 # DeploymentConfig
 - apiVersion: apps.openshift.io/v1
   kind: DeploymentConfig
@@ -114,6 +124,21 @@ objects:
                 secretKeyRef:
                   key: matomo-db-name
                   name: ${MATOMO_APP_NAME}-secret
+            - name: MATOMO_PROXY_CLIENT_HEADER
+              valueFrom:
+                configMapKeyRef:
+                  name: ${MATOMO_APP_NAME}-config
+                  key: bitnami.matomoProxyClientHeader
+            - name: MATOMO_ENABLE_FORCE_SSL
+              valueFrom:
+                configMapKeyRef:
+                  name: ${MATOMO_APP_NAME}-config
+                  key: bitnami.matomoEnableForceSsl
+            - name: MATOMO_ENABLE_ASSUME_SECURE_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: ${MATOMO_APP_NAME}-config
+                  key: bitnami.matomoEnableAssumeSecureProtocol
           image: bitnami/matomo:latest
           imagePullPolicy: Always
           name: matomo
@@ -332,6 +357,16 @@ parameters:
   name: MATOMO_PROXY_CLIENT_HEADER
   required: true
   value: HTTP_X_FORWARDED_FOR
+- description: Enable force_ssl in Matomo configuration file.
+  displayName: Enable force_ssl in Matomo configuration file
+  name: MATOMO_ENABLE_FORCE_SSL
+  required: true
+  value: 'yes'
+- description: Enable assume_secure_protocol in Matomo configuration file.
+  displayName: Enable assume_secure_protocol in Matomo configuration file
+  name: MATOMO_ENABLE_ASSUME_SECURE_PROTOCOL
+  required: true
+  value: 'yes'
 # MariaDB parameters
 - description: Maximum amount of memory the container can use.
   displayName: Memory Limit
