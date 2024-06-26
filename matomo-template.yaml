@@ -36,6 +36,7 @@ objects:
       app: ${MATOMO_APP_NAME}
     name: ${MATOMO_APP_NAME}-route
   spec:
+    host: ${MATOMO_HOSTNAME}
     port:
       targetPort: 8080-tcp
     to:
@@ -290,6 +291,10 @@ parameters:
   name: MATOMO_APP_NAME
   required: true
   value: matomo-app
+- description: Hostname for the route used to connect to your application.
+  displayName: Hostname
+  name: MATOMO_HOSTNAME
+  value: null
 - description: Username for logging into Matomo
   displayName: Username
   name: MATOMO_USERNAME
